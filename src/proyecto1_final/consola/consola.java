@@ -30,7 +30,7 @@ public class consola {
 			else if (opcion_seleccionada == 2 )
 				ejecutarCargarResultadosPartido();
 			else if (opcion_seleccionada == 3 && baseDeDatos != null)
-				ejecutarCrearEquipo();
+				ejecutarAccederListaJugadores();
 			else if (opcion_seleccionada == 4 && baseDeDatos != null)
 				ejecutarCrearEquipo();
 			else if (opcion_seleccionada == 5 && baseDeDatos != null)
@@ -82,11 +82,11 @@ public class consola {
 	
 	private void ejecutarCrearEquipo() {
 		System.out.println("Bienvenido a la creación de tu equipo");
-		System.out.println("Cada equipo debe tener máximo 15 jugadores y cuentas con un presupuesto de.....");
+		System.out.println("Cada equipo debe tener máximo 15 jugadores y cuentas con un presupuesto de 100 millones");
 		System.out.println("Debe tener 2 arqueros, 5 defensores, 5 mediocampistas y 3 delanteros");
 		String nombreEquipo = input("Ingrese el nombre de su equipo:");
 		String arquero1 = input("Ingrese el nombre de un arquero deseado: ");
-		String arquero2 = input("Ingrese el nombre de otro arquero deseado: ");
+		String arquero2 = input("Ingrese el nombre de un arquero deseado: ");
 		String defensor1 = input("Ingrese el nombre de un defensor deseado: ");
 		String defensor2 = input("Ingrese el nombre de un defensor deseado: ");
 		String defensor3 = input("Ingrese el nombre de un defensor deseado: ");
