@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import uniandes.dpoo.taller0.modelo.Participacion;
+
 /**
  * Esta clase agrupa toda la información sobre los jugadores y calcula algunas cosas
  * sobre sus esultados.
@@ -21,6 +23,7 @@ public class Jugador {
 	private String posicion;
 	// 4. Precio de compra/venta 
 	private int precio;
+
 	
 	//FUNCIÓN CONSTRUCTORA
 	/**
@@ -36,6 +39,7 @@ public class Jugador {
 		this.equipo = elEquipo;
 		this.posicion = laPosicion;
 		this.precio = elPrecio;
+
 	}
 	
 
@@ -54,10 +58,6 @@ public class Jugador {
 	public int darPrecio() {
 		return precio;
 	}
-	
-	
-	
-	
 	
 	
 	
