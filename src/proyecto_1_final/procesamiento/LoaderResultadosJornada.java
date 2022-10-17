@@ -20,7 +20,7 @@ import proyecto1_final.modelo.Transferencias;
 public class LoaderResultadosJornada {
 	public static CreacionBaseDedDatosResultados cargarArchivo(String nombreArchivo2) throws FileNotFoundException, IOException
 	{
-		nombreArchivo2 = "data/Jugadores Fantasy League.csv";
+		nombreArchivo2 = "data/Jornada 1 Fantasy League.csv";
 		List<Jornada> jugadores_jornada = new ArrayList<>();
 		Map<String, Equipo_Fantasia> info_jugadores = new HashMap<>();
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivo2));
@@ -36,12 +36,13 @@ public class LoaderResultadosJornada {
 			int Goles_anotados = Integer.parseInt(lista_jornada[4]);
 			int Goles_recibidos = Integer.parseInt(lista_jornada[5]);
 			int Asistencias = Integer.parseInt(lista_jornada[6]);
-			Boolean penaltiFallado = lista_jornada[7];
-			Boolean penaltiAtajado = lista_jornada[8];
+			Boolean penaltiFallado = Boolean.parseBoolean(lista_jornada[7]);
+			Boolean penaltiAtajado = Boolean.parseBoolean(lista_jornada[8]);
 			int tarjetasAmarillas = Integer.parseInt(lista_jornada[9]);
 			int tarjetasRojas = Integer.parseInt(lista_jornada[10]);
 			int autogol = Integer.parseInt(lista_jornada[11]);
 			
+			Jornada laJornada = new Jornada(NumJornada,nombreJugador,posicionJugador,TiempoJugado,Goles_anotados,Goles_recibidos,Asistencias,penaltiFallado,penaltiAtajado,tarjetasAmarillas,tarjetasRojas,autogol);
 		}
 	}
 	
