@@ -38,8 +38,20 @@ public class Puntos {
 				contador_puntos = contador_puntos + (5*Goles_anotados);}
 			if ((posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)  && Goles_anotados > 0){
 				contador_puntos = contador_puntos + (6*Goles_anotados);}
-			
-			
+			if (Asistencias > 0) {
+				contador_puntos = contador_puntos + (3*Asistencias);}
+			if (Goles_recibidos == 0 && (posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)) {
+				contador_puntos = contador_puntos + 4;}
+			if (posicionJugador == Posicion.PORTERO && penaltiAtajado == true) {
+				contador_puntos = contador_puntos + 5;}
+			if (penaltiFallado == true) {
+				contador_puntos = contador_puntos - 2;}
+			if (tarjetasAmarillas != 0) {
+				contador_puntos = contador_puntos - 1;}
+			if (tarjetasRojas != 0) {
+				contador_puntos = contador_puntos - 3;}
+			if (autogol != false) {
+				contador_puntos = contador_puntos - 2;}			
 		}
 	}
 	
