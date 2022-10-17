@@ -3,6 +3,8 @@ package proyecto1_final.modelo;
 import java.util.HashMap;
 import java.util.Map;
 
+import uniandes.dpoo.taller0.modelo.Evento;
+
 
 
 public class Puntos {
@@ -25,34 +27,50 @@ public class Puntos {
 	private int contador_puntos;
 	
 	public void calcularPuntos() {
-		Map<String, Jugador> jugador_puntos = new HashMap<>();
+		Map<String, Puntos> jugador_puntos = new HashMap<>();
 		contador_puntos = 0;
-		while (jugador_puntos != null) {
-			if (TiempoJugado < 60){
-				contador_puntos = contador_puntos + 1;}
-			if (TiempoJugado >= 60) {
-				contador_puntos = contador_puntos + 2;}
-			if (posicionJugador == Posicion.DELANTERO && Goles_anotados > 0) {
-				contador_puntos = contador_puntos + (4*Goles_anotados);}
-			if (posicionJugador == Posicion.MEDIOCENTRO && Goles_anotados > 0) {
-				contador_puntos = contador_puntos + (5*Goles_anotados);}
-			if ((posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)  && Goles_anotados > 0){
-				contador_puntos = contador_puntos + (6*Goles_anotados);}
-			if (Asistencias > 0) {
-				contador_puntos = contador_puntos + (3*Asistencias);}
-			if (Goles_recibidos == 0 && (posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)) {
-				contador_puntos = contador_puntos + 4;}
-			if (posicionJugador == Posicion.PORTERO && penaltiAtajado == true) {
-				contador_puntos = contador_puntos + 5;}
-			if (penaltiFallado == true) {
-				contador_puntos = contador_puntos - 2;}
-			if (tarjetasAmarillas != 0) {
-				contador_puntos = contador_puntos - 1;}
-			if (tarjetasRojas != 0) {
-				contador_puntos = contador_puntos - 3;}
-			if (autogol != false) {
-				contador_puntos = contador_puntos - 2;}			
+		Alineacion laAlineacion = buscarJugador(nombre);
+		if (laAlineacion != null) {
+			while (jugador_puntos != null) {
+				if (TiempoJugado < 60){
+					contador_puntos = contador_puntos + 1;}
+				if (TiempoJugado >= 60) {
+					contador_puntos = contador_puntos + 2;}
+				if (posicionJugador == Posicion.DELANTERO && Goles_anotados > 0) {
+					contador_puntos = contador_puntos + (4*Goles_anotados);}
+				if (posicionJugador == Posicion.MEDIOCENTRO && Goles_anotados > 0) {
+					contador_puntos = contador_puntos + (5*Goles_anotados);}
+				if ((posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)  && Goles_anotados > 0){
+					contador_puntos = contador_puntos + (6*Goles_anotados);}
+				if (Asistencias > 0) {
+					contador_puntos = contador_puntos + (3*Asistencias);}
+				if (Goles_recibidos == 0 && (posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)) {
+					contador_puntos = contador_puntos + 4;}
+				if (posicionJugador == Posicion.PORTERO && penaltiAtajado == true) {
+					contador_puntos = contador_puntos + 5;}
+				if (penaltiFallado == true) {
+					contador_puntos = contador_puntos - 2;}
+				if (tarjetasAmarillas != 0) {
+					contador_puntos = contador_puntos - 1;}
+				if (tarjetasRojas != 0) {
+					contador_puntos = contador_puntos - 3;}
+				if (autogol != false) {
+					contador_puntos = contador_puntos - 2;}	
 		}
+		}
+	}	
+	private static Alineacion buscarJugador(String nombre) {
+			Alineacion laAlineacion = null;
+			for (int i = alineacion.size() - 1; i >= 0 && laAlineacion == null; i--)
+			{
+				Alineacion unaAlineacion = alineacion.get(i);
+				if (unaAlineacion.darNombres().equals(nombre))
+				{
+					laAlineacion = unaAlineacion;
+				}
+			}
+			return laAlineacion;	
+	
 	}
 	
 
