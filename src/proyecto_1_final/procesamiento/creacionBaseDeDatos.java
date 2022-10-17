@@ -57,5 +57,9 @@ public class creacionBaseDeDatos {
 	public void agregarEquipo_Fantasia(Equipo_Fantasia equipo_fantasia) {
 		lista_de_equipos_fantasia.put(equipo_fantasia.darNombre(),equipo_fantasia);
 	}
+	
+	public Map<String, Jugador> darMapaJugadpres() {
+		return this.lista_de_jugadores;
+	}
 }
 	

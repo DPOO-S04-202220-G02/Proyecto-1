@@ -31,8 +31,8 @@ public class consola {
 				ejecutarCargarJugadores();
 			else if (opcion_seleccionada == 2 )
 				ejecutarCargarResultadosPartido();
-			/*else if (opcion_seleccionada == 3 && baseDeDatos != null)
-				ejecutarAccederListaJugadores();*/
+			else if (opcion_seleccionada == 3 && baseDeDatos != null)
+				ejecutarAccederListaJugadores();
 			else if (opcion_seleccionada == 4 && baseDeDatos != null)
 				ejecutarCrearEquipo();
 			/*else if (opcion_seleccionada == 5 && baseDeDatos != null)
@@ -221,9 +221,27 @@ public class consola {
 		}
 
 	}
+	
+	private void ejecutarAccederListaJugadores() {
+		System.out.println("Este es el catalogo de los jugadores de la liga de fantassia");
+		for (Map.Entry jugador: baseDeDatos.darMapaJugadpres().entrySet()) {
+			Jugador info = (Jugador) jugador.getValue();
+			System.out.println("Nombre: " + info.darNombre());
+			System.out.println("Posicion: " + info.darPosicion());
+			System.out.println("Equipo: " + info.darEquipo());
+			System.out.println("Precio: " + info.darPrecio());
+			System.out.println("------------------------------");
+
+
+		}
+		 
+	}
+
 	public static void main(String[] args)
 	{
 		consola consola = new consola();
 		consola.ejecutarAplicacion();
 	}
+	
+	
 }

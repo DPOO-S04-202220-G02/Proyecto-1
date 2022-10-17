@@ -42,7 +42,7 @@ public class Jugador {
 	}
 	
 	public String darEquipo() {
-		return equipo;
+		return equipo.darNombreEquipo();
 	}
 	public String darPosicion() {
 		return posicion.darPosicionJugador();
