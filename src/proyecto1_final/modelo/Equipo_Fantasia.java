@@ -1,32 +1,39 @@
 package proyecto1_final.modelo;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-
-import uniandes.dpoo.taller0.modelo.Atleta;
+import proyecto1_final.modelo.Alineacion;
 
 public class Equipo_Fantasia {
 	
+	//Atributos 
+	
 	private String nombre;
 	
-	public int puntos;
+	public Map<Int,Puntos> puntos_equipo;
+	
+	private List<Alineacion> jugadores;
+	
+	private boolean transferencias;
+	
+	// Funcion constructora 
+	
+	public Equipo_Fantasia (String elNombre, int losPuntos, boolean hay_transferencias) {
+		this.nombre = elNombre;
+		this.puntos_equipo = Map <int, losPuntos>;
+		this.jugadores = new ArrayList<>();
+		this.transferencias = hay_transferencias;
+		
+	}
 	
 	
-	private String arquero1;
-	private String arquero2;
-	private String defensor1;
-	private String defensor2;
-	private String defensor3;	
-	private String defensor4;
-	private String defensor5;
-	private String mediocampista1;
-	private String mediocampista2;
-	private String mediocampista3;
-	private String mediocampista4;
-	private String mediocampista5;
-	private String delantero1;
-	private String delantero2;
-	private String delantero3;
+	
+	
 
 	
 	
