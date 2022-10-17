@@ -28,7 +28,7 @@ public class LoaderJugadores {
 		while (linea != null) // Cuando se llegue al final del archivo, linea tendrá el valor null
 		{
 			// separar los valores que hay en la linea
-			String[] jugadores_lista = linea.split(";");
+			String[] jugadores_lista = linea.split(",");
 			String nombreJugador = jugadores_lista[0];
 			String nombreEquipo = jugadores_lista[1];
 			Posicion posicionJugador = Posicion.valueOf(jugadores_lista[2].toUpperCase());
