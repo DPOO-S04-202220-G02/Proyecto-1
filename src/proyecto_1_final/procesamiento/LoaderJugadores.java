@@ -17,8 +17,7 @@ import proyecto1_final.modelo.Posicion;
 public class LoaderJugadores {
 
 	public static creacionBaseDeDatos cargarArchivo(String nombreArchivo) throws FileNotFoundException, IOException
-	{ 
-		nombreArchivo = "data/Jugadores Fantasy League.csv";	
+	{ 			
 		Map<String, Jugador> jugadores = new HashMap<>();
 		Map<String, Equipo> equipos = new HashMap<>();
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));

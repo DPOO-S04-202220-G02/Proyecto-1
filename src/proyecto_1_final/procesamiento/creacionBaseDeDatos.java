@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import proyecto1_final.modelo.Equipo;
+import proyecto1_final.modelo.Equipo_Fantasia;
 import proyecto1_final.modelo.Jugador;
 import uniandes.dpoo.taller0.modelo.Atleta;
 
@@ -16,17 +17,20 @@ public class creacionBaseDeDatos {
 	//Atributos 
 	
 	//1. Lista de jugadores sin estar repetidos
-	private List<Jugador> lista_de_jugadores;
+	private Map<String, Jugador> lista_de_jugadores;
 	
 	//2. Lista de equipos sin estar repetidos
-	private List<Equipo> lista_de_equipos;
+	private Map<String, Equipo> lista_de_equipos;
+	
+	private Map<String, Equipo_Fantasia> lista_de_equipos_fantasia;
 	
 	// FUNCION CONSTRUCTORA 
 	// tiene 2 parametros: El nombre y el equipo
 	
 	public creacionBaseDeDatos(Map<String, Jugador> jugadores,Map<String, Equipo> equipos) {
-		this.lista_de_jugadores = new ArrayList <Jugador>(jugadores.values());
-		this.lista_de_equipos = new ArrayList <Equipo>(equipos.values());
+		this.lista_de_jugadores = jugadores;
+		this.lista_de_equipos = equipos;
+		this.lista_de_equipos_fantasia = new HashMap<>();
 	}
 	
 	// Métodos
@@ -39,6 +43,19 @@ public class creacionBaseDeDatos {
 
 	public Map<String, List<Jugador>> jugadoresPorEquipo(String nombreEquipo){
 		Map<String, List<Jugador>> resultado = new HashMap<String, List<Jugador>>();
+	}
+	
+	public Jugador jugadorPorNombre(String nombre) {
+		Jugador elJugador = lista_de_jugadores.get(nombre);
+		if (elJugador == null) {
+			return null;
+		} 
 		
+		return elJugador;
+	
+	}
+	public void agregarEquipo_Fantasia(Equipo_Fantasia equipo_fantasia) {
+		lista_de_equipos_fantasia.put(equipo_fantasia.darNombre(),equipo_fantasia);
 	}
 }
+	

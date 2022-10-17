@@ -10,9 +10,9 @@ public class Jugador {
 	// 1. Nombre del jugador (Se supone que no hay jugadores repetidos)
 	private String nombre;
 	// 2. Equipo del jugador 
-	private String equipo; 
+	private Equipo equipo; 
 	// 3. Posicion en la que juega
-	private String posicion;
+	private Posicion posicion;
 	// 4. Precio de compra/venta 
 	private int precio;
 
@@ -26,7 +26,7 @@ public class Jugador {
 	 * @param laPosicion  La posición en la que juega
 	 * @param elPrecio  Precio de compra/venta del jugador
 	 */
-	public Jugador(String elNombre, String elEquipo, String laPosicion, int elPrecio) {
+	public Jugador(String elNombre, Equipo elEquipo, Posicion laPosicion, int elPrecio) {
 		this.nombre = elNombre;
 		this.equipo = elEquipo;
 		this.posicion = laPosicion;
@@ -45,7 +45,7 @@ public class Jugador {
 		return equipo;
 	}
 	public String darPosicion() {
-		return posicion;
+		return posicion.darPosicionJugador();
 	}
 	public int darPrecio() {
 		return precio;
