@@ -63,6 +63,29 @@ public class Equipo_Fantasia {
 		
 	}
 	
+	public void agregarJugadorTitular(Jugador jugador) {
+		titulares.put(jugador.darNombre(),jugador);
+		
+		
+	}
+	
+	
+	public Map<String,Jugador> darEquipoFantasia() {
+		
+		return this.jugadores;
+		
+	}
+	
+	public Jugador jugadorPorNombre(String nombre) {
+		Jugador elJugador = jugadores.get(nombre);
+		if (elJugador == null) {
+			return null;
+		} 
+		
+		return elJugador;
+		
+	}
+	
 	
 	
 

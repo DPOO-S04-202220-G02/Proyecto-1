@@ -61,5 +61,18 @@ public class creacionBaseDeDatos {
 	public Map<String, Jugador> darMapaJugadpres() {
 		return this.lista_de_jugadores;
 	}
+	
+	public Equipo_Fantasia darEquipoFantasiaPorNombre(String nombre) {
+		Equipo_Fantasia Equipo_Fantasia = lista_de_equipos_fantasia.get(nombre);
+		if (Equipo_Fantasia == null) {
+			return null;
+		} 
+		
+		return Equipo_Fantasia;
+	}
+	public void actualizarJugador(String nombre, Jugador jugador) {
+		this.lista_de_jugadores.put(nombre, jugador);
+	}
+	
 }
 	

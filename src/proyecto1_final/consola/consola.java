@@ -11,12 +11,15 @@ import java.util.Map;
 import proyecto1_final.modelo.Equipo_Fantasia;
 import proyecto1_final.modelo.Jugador;
 import proyecto_1_final.procesamiento.creacionBaseDeDatos;
+import proyecto_1_final.procesamiento.CreacionBaseDedDatosResultados;
 import proyecto_1_final.procesamiento.LoaderJugadores;
+import proyecto_1_final.procesamiento.LoaderResultadosJornada;
 
 
 public class consola {
 	
 	private creacionBaseDeDatos baseDeDatos;
+	private CreacionBaseDedDatosResultados baseDeDatosResultados;
 	
 	public void ejecutarAplicacion() {
 	System.out.println("Bienvenido a la aplicación de  los equipos de Fantasia");
@@ -35,11 +38,11 @@ public class consola {
 				ejecutarAccederListaJugadores();
 			else if (opcion_seleccionada == 4 && baseDeDatos != null)
 				ejecutarCrearEquipo();
-			/*else if (opcion_seleccionada == 5 && baseDeDatos != null)
+			else if (opcion_seleccionada == 5 && baseDeDatos != null)
 				ejecutarInformacionEquipoFantasia();
 			else if (opcion_seleccionada == 6 && baseDeDatos != null)
 				ejecutarModificarAlineacionEquipo();
-			else if (opcion_seleccionada == 7 && baseDeDatos != null)
+			/*else if (opcion_seleccionada == 7 && baseDeDatos != null)
 				ejecutarTransferenciaJugadores();
 			else if (opcion_seleccionada == 8 && baseDeDatos != null)
 				ejecutarGanadorTemporada);
@@ -102,15 +105,15 @@ public class consola {
 				System.out.println("El jugador no existe");
 			}
 			else {
-				System.out.println("El jugador " + infoJugador.darPosicion());
+				
 				boolean existe = equipoNuevo.existeJugador(jugador);
-				boolean limitePos = limitePos(infoJugador.darPosicion(), porteros, defensas, mediocentros, delanteros);
+				boolean limitePos = limitePos(infoJugador.darPosicion(), porteros, defensas, mediocentros, delanteros, 1);
 				boolean tienePresupuesto = tienePresupuesto(infoJugador.darPrecio(), equipoNuevo.darPresupuesto());
 				if (existe == true) {
 					System.out.println("El jugador ya esta en tu equipo");
 				}
 				else if (limitePos == false ) {
-					System.out.println("Ya existen jugadores para la posición buscada");
+					System.out.println("Ya existen jugadores para" + infoJugador.darPosicion()+ "s");
 					
 				}
 				else if ( tienePresupuesto== false) {
@@ -120,17 +123,21 @@ public class consola {
 					equipoNuevo.agregarJugador(infoJugador);
 					System.out.println(jugador + " fue añadido a " + nombreEquipo );
 					System.out.println("El presupuesto restante es: " + equipoNuevo.darPresupuesto());
-					if (infoJugador.darPosicion().equals("arquero")) {
+					if (infoJugador.darPosicion().equals("portero")) {
 						porteros ++;
+						System.out.println("Ha seleccionado " + porteros + " " + infoJugador.darPosicion()+"(s)");
 					}
 					if (infoJugador.darPosicion().equals("defensa")) {
 						defensas ++;
+						System.out.println("Ha seleccionado " + defensas + " " + infoJugador.darPosicion()+"(s)");
 					}
 					if (infoJugador.darPosicion().equals("mediocentro")) {
 						mediocentros ++;
+						System.out.println("Ha seleccionado " + mediocentros + " " + infoJugador.darPosicion()+"(s)");
 					}
 					if (infoJugador.darPosicion().equals("delantero")) {
 						delanteros ++;
+						System.out.println("Ha seleccionado " + delanteros + " " + infoJugador.darPosicion()+"(s)");
 					}
 					if (porteros + defensas + mediocentros + delanteros == 15 ) {
 						equipoNoCompleto = false;
@@ -145,8 +152,10 @@ public class consola {
 		
 	}
 	
-	private boolean limitePos(String posicion, int porteros, int defensas, int mediocentros, int delanteros) {
-		if (posicion.equals("arquero") && porteros == 2) {
+	private boolean limitePos(String posicion, int porteros, int defensas, int mediocentros, int delanteros, int tipo_equipo) {
+		if (tipo_equipo == 1) {
+		
+		if (posicion.equals("portero") && porteros == 2) {
 			return false;
 		}
 		if (posicion.equals("defensa") && defensas ==5) {
@@ -158,7 +167,26 @@ public class consola {
 		if (posicion.equals("delantero") && delanteros ==3) {
 			return false;
 		}
+		}
+		
+		else if (tipo_equipo == 2) {
+			
+			if (posicion.equals("portero") && porteros == 1) {
+				return false;
+			}
+			if (posicion.equals("defensa") && defensas ==4) {
+				return false;
+			}
+			if (posicion.equals("mediocentro") && mediocentros ==4) {
+				return false;
+			}
+			if (posicion.equals("delantero") && delanteros ==2) {
+				return false;
+			}
+			}
+		
 		return true;
+		
 	}
 	
 	private boolean tienePresupuesto(int precio, int presupuesto) {
@@ -186,9 +214,10 @@ public class consola {
 	}
 	private void ejecutarCargarResultadosPartido() {
 		try
-		{
-			baseDeDatos = LoaderJugadores.cargarArchivo2(archivo2);
-			System.out.println("Se cargó el archivo " + archivo2 + " con información de los partidos.");
+		{	
+			String nombreArchivo = "data/Jornada 1 Fantasy League.csv";
+			baseDeDatos = LoaderResultadosJornada.cargarArchivo(nombreArchivo, baseDeDatos);
+			System.out.println("Se cargó el archivo " + nombreArchivo + " con información de los partidos.");
 		}
 	
 		catch (FileNotFoundException e)
@@ -223,20 +252,132 @@ public class consola {
 	}
 	
 	private void ejecutarAccederListaJugadores() {
-		System.out.println("Este es el catalogo de los jugadores de la liga de fantassia");
+		System.out.println("Este es el catalogo de los jugadores de la liga de fantasia");
 		for (Map.Entry jugador: baseDeDatos.darMapaJugadpres().entrySet()) {
 			Jugador info = (Jugador) jugador.getValue();
 			System.out.println("Nombre: " + info.darNombre());
 			System.out.println("Posicion: " + info.darPosicion());
 			System.out.println("Equipo: " + info.darEquipo());
 			System.out.println("Precio: " + info.darPrecio());
+			System.out.println("Puntos: " + info.darPuntosTotales());
 			System.out.println("------------------------------");
-
-
 		}
 		 
 	}
-
+	
+	public void ejecutarModificarAlineacionEquipo() {
+		String nombre = input("Ingrese el nombre de su equipo de fantasia: ");
+		Equipo_Fantasia equipoFantasia = baseDeDatos.darEquipoFantasiaPorNombre(nombre);
+		boolean equipoTitularNoCompleto= true;
+		int porteros = 0;
+		int defensas = 0;
+		int mediocentros = 0;
+		int delanteros = 0;
+		if (equipoFantasia == null) {
+			System.out.println("EL nombre de su equipo no se encuentra en la base de datos :(" );
+		}
+		else {
+			System.out.println("Este es su equipo de fantasia.");
+			for (Map.Entry jugadores: equipoFantasia.darEquipoFantasia().entrySet()) {
+				Jugador info = (Jugador) jugadores.getValue();
+				System.out.println("Nombre: " + info.darNombre());
+				System.out.println("Posicion: " + info.darPosicion());
+				System.out.println("Equipo: " + info.darEquipo());
+				System.out.println("------------------------------");
+			}
+			
+			while (equipoTitularNoCompleto) {
+				String jugador = input("Ingrese el nombre de un jugador que desee que sea titular: ");
+				Jugador infoJugador = equipoFantasia.jugadorPorNombre(jugador);
+				boolean existe = equipoFantasia.existeJugador(jugador);
+				
+				if (existe == false) {
+					System.out.println("El jugador no esta en tu equipo de fantasia :( </3");
+				}
+				else {
+				boolean limitePos = limitePos(infoJugador.darPosicion(), porteros, defensas, mediocentros, delanteros, 2);
+				if (limitePos == false ) {
+					System.out.println("Ya escogiste tus titulares para la posición buscada");
+				
+				}
+				else {
+						equipoFantasia.agregarJugadorTitular(infoJugador);
+						System.out.println(jugador + " fue añadido a tu formacion titular" );
+						if (infoJugador.darPosicion().equals("portero")) {
+							porteros ++;
+							System.out.println("Ha seleccionado " + porteros + " " + infoJugador.darPosicion()+"(s)");
+						}
+						if (infoJugador.darPosicion().equals("defensa")) {
+							defensas ++;
+							System.out.println("Ha seleccionado " + defensas + " " + infoJugador.darPosicion()+"(s)");
+						}
+						if (infoJugador.darPosicion().equals("mediocentro")) {
+							mediocentros ++;
+							System.out.println("Ha seleccionado " + mediocentros + " " + infoJugador.darPosicion()+"(s)");
+						}
+						if (infoJugador.darPosicion().equals("delantero")) {
+							delanteros ++;
+							System.out.println("Ha seleccionado " + delanteros + " " + infoJugador.darPosicion()+"(s)");
+						}
+						if (porteros + defensas + mediocentros + delanteros == 11 ) {
+							equipoTitularNoCompleto = false;
+						}
+					}
+				}
+			}
+				System.out.println("Completaste tu equipo titular :) <3");
+				baseDeDatos.agregarEquipo_Fantasia(equipoFantasia);
+			
+			}
+			
+			
+	}
+	
+	public void ejecutarInformacionEquipoFantasia() {
+	System.out.println("Esta es la informacion de su equipo de fantasia:" );
+	String nombre = input("Ingrese el nombre de su equipo de fantasia: ");
+	Equipo_Fantasia equipoFantasia = baseDeDatos.darEquipoFantasiaPorNombre(nombre);
+	int puntosEquipo = 0;
+	if (equipoFantasia == null) {
+		System.out.println("EL nombre de su equipo no se encuentra en la base de datos :(" );
+	}
+	else {
+	System.out.println("Que opcion desea ejecutar:" );
+	System.out.println("1. Ver puntos totales de todas las jornadas:");
+	System.out.println("2. Ver puntos totales de una jornada:");
+	int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
+	if(opcion_seleccionada == 1) {
+		
+	
+	for (Map.Entry jugadores: equipoFantasia.darEquipoFantasia().entrySet()) {
+		Jugador info = (Jugador) jugadores.getValue();
+		System.out.println("Nombre: " + info.darNombre());
+		System.out.println("Posicion: " + info.darPosicion());
+		System.out.println("Equipo: " + info.darEquipo());
+		System.out.println("Puntos: " + info.darPuntosTotales());
+		System.out.println("------------------------------");
+		puntosEquipo = puntosEquipo +info.darPuntosTotales();
+	}
+	System.out.println("La cantidad de puntos totales de su equipo de fantasia es: "+ puntosEquipo);
+	}
+	if(opcion_seleccionada == 2) {
+		 String jornada = input("Por favor seleccioneel numero de la jornada a ver: ");
+		
+		for (Map.Entry jugadores: equipoFantasia.darEquipoFantasia().entrySet()) {
+			Jugador info = (Jugador) jugadores.getValue();
+			System.out.println("Nombre: " + info.darNombre());
+			System.out.println("Posicion: " + info.darPosicion());
+			System.out.println("Equipo: " + info.darEquipo());
+			System.out.println("Puntos: " + info.darPuntosJornada(jornada));
+			System.out.println("------------------------------");
+			puntosEquipo = puntosEquipo +info.darPuntosJornada(jornada);
+		}
+		System.out.println("La cantidad de puntos totales en la jornada " + jornada + " de su equipo de fantasia es: "+ puntosEquipo);
+		}
+	}
+	}
+	
+	
 	public static void main(String[] args)
 	{
 		consola consola = new consola();

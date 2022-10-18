@@ -12,26 +12,21 @@ public class Puntos {
 	//atributos
 	
 	//1.lista de la jornada
-	
-	private String nombre;
 	private Posicion posicionJugador;
 	private int TiempoJugado;
 	private int Goles_anotados;
 	private int Goles_recibidos;
 	private int Asistencias;
-	private boolean penaltiFallado;
-	private boolean penaltiAtajado;
+	private int penaltiFallado;
+	private int penaltiAtajado;
 	private int tarjetasAmarillas;
 	private int tarjetasRojas;
-	private boolean autogol;
+	private int autogol;
 	private int contador_puntos;
+	private int puntos_totales;
 	
 	public void calcularPuntos() {
-		Map<String, Puntos> jugador_puntos = new HashMap<>();
 		contador_puntos = 0;
-		Alineacion laAlineacion = buscarJugador(nombre);
-		if (laAlineacion != null) {
-			while (jugador_puntos != null) {
 				if (TiempoJugado < 60){
 					contador_puntos = contador_puntos + 1;}
 				if (TiempoJugado >= 60) {
@@ -46,20 +41,42 @@ public class Puntos {
 					contador_puntos = contador_puntos + (3*Asistencias);}
 				if (Goles_recibidos == 0 && (posicionJugador == Posicion.DEFENSA ||posicionJugador == Posicion.PORTERO)) {
 					contador_puntos = contador_puntos + 4;}
-				if (posicionJugador == Posicion.PORTERO && penaltiAtajado == true) {
-					contador_puntos = contador_puntos + 5;}
-				if (penaltiFallado == true) {
-					contador_puntos = contador_puntos - 2;}
+				if (posicionJugador == Posicion.PORTERO && penaltiAtajado >= 1) {
+					contador_puntos = contador_puntos + 5*penaltiAtajado;}
+				if (penaltiFallado >= 1) {
+					contador_puntos = contador_puntos - 2*penaltiFallado;}
 				if (tarjetasAmarillas != 0) {
 					contador_puntos = contador_puntos - 1;}
 				if (tarjetasRojas != 0) {
 					contador_puntos = contador_puntos - 3;}
-				if (autogol != false) {
-					contador_puntos = contador_puntos - 2;}	
-		}
-		}
-	}	
-	private static Alineacion buscarJugador(String nombre) {
+				if (autogol  >= 1) {
+					contador_puntos = contador_puntos - 2*penaltiFallado;}	
+		
+				this.puntos_totales = contador_puntos;
+		
+		
+	}
+	
+	public Puntos (Posicion posicionJugador, int TiempoJugado,int Goles_anotados,int Goles_recibidos, int Asistencias, int penaltiFallado, int penaltiAtajado, int tarjetasAmarillas, int tarjetasRojas, int autogol) {
+		this.posicionJugador = posicionJugador;
+		this.TiempoJugado = TiempoJugado;
+		this.Goles_anotados = Goles_anotados;
+		this.Goles_recibidos = Goles_recibidos;
+		this.Asistencias = Asistencias;
+		this.penaltiFallado = penaltiFallado;
+		this.penaltiAtajado = penaltiAtajado;
+		this.tarjetasAmarillas = tarjetasAmarillas;
+		this.tarjetasRojas = tarjetasRojas;
+		this.autogol = autogol;
+		
+
+	}
+	public int darPuntosTotales() {
+		return this.puntos_totales;
+	}
+	
+	
+	/*private static Alineacion buscarJugador(String nombre) {
 			Alineacion laAlineacion = null;
 			for (int i = alineacion.size() - 1; i >= 0 && laAlineacion == null; i--)
 			{
@@ -71,7 +88,7 @@ public class Puntos {
 			}
 			return laAlineacion;	
 	
-	}
+	}*/
 	
 
 }

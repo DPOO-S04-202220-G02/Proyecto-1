@@ -1,5 +1,7 @@
 package proyecto1_final.modelo;
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Esta clase agrupa toda la información sobre los jugadores y calcula algunas cosas
@@ -15,6 +17,8 @@ public class Jugador {
 	private Posicion posicion;
 	// 4. Precio de compra/venta 
 	private int precio;
+	
+	private Map<String, Puntos> puntosJornada;
 
 	
 	//FUNCIÓN CONSTRUCTORA
@@ -31,6 +35,7 @@ public class Jugador {
 		this.equipo = elEquipo;
 		this.posicion = laPosicion;
 		this.precio = elPrecio;
+		this.puntosJornada =  new HashMap<>();
 
 	}
 	
@@ -49,6 +54,26 @@ public class Jugador {
 	}
 	public int darPrecio() {
 		return precio;
+	}
+	
+	public void agregarPuntosJornada(Puntos puntos, String jornada) {
+		this.puntosJornada.put(jornada,puntos);
+		
+	}
+	
+	public int darPuntosTotales() {
+		int puntosTotales = 0;
+		for (Map.Entry jornada: this.puntosJornada.entrySet()) {
+			Puntos info = (Puntos) jornada.getValue();
+			puntosTotales = puntosTotales + info.darPuntosTotales();
+			System.out.println(jornada.getKey());
+		}
+		return puntosTotales;
+	}
+	
+	public int darPuntosJornada(String jornada) {
+		Puntos puntos_Jornada = puntosJornada.get(jornada);
+		return puntos_Jornada.darPuntosTotales();
 	}
 	
 	
