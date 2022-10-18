@@ -66,20 +66,15 @@ public class Jugador {
 		for (Map.Entry jornada: this.puntosJornada.entrySet()) {
 			Puntos info = (Puntos) jornada.getValue();
 			puntosTotales = puntosTotales + info.darPuntosTotales();
-			System.out.println(jornada.getKey());
 		}
 		return puntosTotales;
 	}
 	
 	public int darPuntosJornada(String jornada) {
-		if (puntosJornada != null) {
 			Puntos puntos_Jornada = puntosJornada.get(jornada);
 			return puntos_Jornada.darPuntosTotales();
 		}
-		else {
-			return 0;
-		}
-	}
+	
 	
 	
 	

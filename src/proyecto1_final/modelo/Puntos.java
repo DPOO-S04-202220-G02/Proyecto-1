@@ -3,7 +3,7 @@ package proyecto1_final.modelo;
 import java.util.HashMap;
 import java.util.Map;
 
-import uniandes.dpoo.taller0.modelo.Evento;
+
 
 
 
@@ -76,19 +76,6 @@ public class Puntos {
 	}
 	
 	
-	/*private static Alineacion buscarJugador(String nombre) {
-			Alineacion laAlineacion = null;
-			for (int i = alineacion.size() - 1; i >= 0 && laAlineacion == null; i--)
-			{
-				Alineacion unaAlineacion = alineacion.get(i);
-				if (unaAlineacion.darNombres().equals(nombre))
-				{
-					laAlineacion = unaAlineacion;
-				}
-			}
-			return laAlineacion;	
-	
-	}*/
 	
 
 }

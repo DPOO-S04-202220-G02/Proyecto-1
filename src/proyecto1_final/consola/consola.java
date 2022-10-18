@@ -268,6 +268,7 @@ public class consola {
 	public void ejecutarModificarAlineacionEquipo() {
 		String nombre = input("Ingrese el nombre de su equipo de fantasia: ");
 		Equipo_Fantasia equipoFantasia = baseDeDatos.darEquipoFantasiaPorNombre(nombre);
+		
 		boolean equipoTitularNoCompleto= true;
 		int porteros = 0;
 		int defensas = 0;
@@ -290,17 +291,23 @@ public class consola {
 				String jugador = input("Ingrese el nombre de un jugador que desee que sea titular: ");
 				Jugador infoJugador = equipoFantasia.jugadorPorNombre(jugador);
 				boolean existe = equipoFantasia.existeJugador(jugador);
+				boolean existe1 = equipoFantasia.existeJugadorTitular(jugador);
 				
-				if (existe == false) {
+				
+				if (existe1 == true) {
+					System.out.println("El jugador ya esta en tu equipo");
+				}
+				else if (existe == false) {
 					System.out.println("El jugador no esta en tu equipo de fantasia :( </3");
 				}
-				else {
-				boolean limitePos = limitePos(infoJugador.darPosicion(), porteros, defensas, mediocentros, delanteros, 2);
-				if (limitePos == false ) {
-					System.out.println("Ya escogiste tus titulares para la posición buscada");
 				
-				}
+	
 				else {
+					boolean limitePos = limitePos(infoJugador.darPosicion(), porteros, defensas, mediocentros, delanteros, 2);
+					 if (limitePos == false ) {
+						System.out.println("Ya escogiste tus titulares para la posición buscada");
+					}
+					 else {
 						equipoFantasia.agregarJugadorTitular(infoJugador);
 						System.out.println(jugador + " fue añadido a tu formacion titular" );
 						if (infoJugador.darPosicion().equals("portero")) {
@@ -322,8 +329,9 @@ public class consola {
 						if (porteros + defensas + mediocentros + delanteros == 11 ) {
 							equipoTitularNoCompleto = false;
 						}
-					}
-				}
+					 }
+					}	
+				
 			}
 				System.out.println("Completaste tu equipo titular :) <3");
 				baseDeDatos.agregarEquipo_Fantasia(equipoFantasia);
@@ -363,7 +371,7 @@ public class consola {
 	if(opcion_seleccionada == 2) {
 		 String jornada = input("Por favor seleccioneel numero de la jornada a ver: ");
 		
-		for (Map.Entry jugadores: equipoFantasia.darEquipoFantasia().entrySet()) {
+		for (Map.Entry jugadores: equipoFantasia.darTitularEquipoFantasia().entrySet()) {
 			Jugador info = (Jugador) jugadores.getValue();
 			System.out.println("Nombre: " + info.darNombre());
 			System.out.println("Posicion: " + info.darPosicion());
