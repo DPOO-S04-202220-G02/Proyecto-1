@@ -72,8 +72,13 @@ public class Jugador {
 	}
 	
 	public int darPuntosJornada(String jornada) {
-		Puntos puntos_Jornada = puntosJornada.get(jornada);
-		return puntos_Jornada.darPuntosTotales();
+		if (puntosJornada != null) {
+			Puntos puntos_Jornada = puntosJornada.get(jornada);
+			return puntos_Jornada.darPuntosTotales();
+		}
+		else {
+			return 0;
+		}
 	}
 	
 	

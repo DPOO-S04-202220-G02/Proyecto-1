@@ -34,6 +34,7 @@ public class LoaderResultadosJornada {
 			String NumJornada = (lista_jornada[0]);
 			String nombreJugador = lista_jornada[1];
 			Posicion posicionJugador = Posicion.valueOf(lista_jornada[2].toUpperCase());
+	
 			int TiempoJugado = Integer.parseInt(lista_jornada[3]);
 			int Goles_anotados = Integer.parseInt(lista_jornada[4]);
 			int Goles_recibidos = Integer.parseInt(lista_jornada[5]);
@@ -50,6 +51,7 @@ public class LoaderResultadosJornada {
 			jugador.agregarPuntosJornada(puntos, NumJornada);
 			baseDeDatos.actualizarJugador(nombreJugador, jugador);
 			}
+			
 			linea = br.readLine();
 		}
 		return baseDeDatos;
