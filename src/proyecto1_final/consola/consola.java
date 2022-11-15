@@ -249,7 +249,7 @@ public class consola {
 			System.out.println("ERROR: hubo un problema leyendo el archivo.");
 			System.out.println(e.getMessage());
 			
-		}
+		}  
 
 	}
 	
