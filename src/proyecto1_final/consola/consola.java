@@ -242,13 +242,13 @@ public class consola {
 		catch (FileNotFoundException e)
 		{
 			System.out.println("ERROR: el archivo indicado no se encontró.");
-			throw e;
+			
 		}
 		catch (IOException e)
 		{
 			System.out.println("ERROR: hubo un problema leyendo el archivo.");
 			System.out.println(e.getMessage());
-			throw e;
+			
 		}
 
 	}
