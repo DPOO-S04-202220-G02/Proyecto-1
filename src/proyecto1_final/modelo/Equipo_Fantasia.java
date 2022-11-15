@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import proyecto1_final.modelo.Alineacion;
+
 
 public class Equipo_Fantasia {
 	
@@ -59,6 +59,19 @@ public class Equipo_Fantasia {
 	
 	}
 	
+	public boolean existeJugadorTitular(String nombre) {
+		if (jugadores == null) {
+			return false;
+		}
+		Jugador elJugador = titulares.get(nombre);
+		if (elJugador == null) {
+			return false;
+		} 
+		
+		return true;
+	
+	}
+	
 	public int darPresupuesto() {
 		return this.presupuesto;
 	}
@@ -79,6 +92,12 @@ public class Equipo_Fantasia {
 		
 	}
 	
+	
+	public Map<String,Jugador> darTitularEquipoFantasia() {
+		
+		return this.titulares;
+		
+	}
 	
 	public Map<String,Jugador> darEquipoFantasia() {
 		

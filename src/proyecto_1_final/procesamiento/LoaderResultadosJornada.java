@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import proyecto1_final.modelo.Alineacion;
+
 import proyecto1_final.modelo.Puntos;
 import proyecto1_final.modelo.rankings;
 import proyecto1_final.modelo.Equipo_Fantasia;
