@@ -231,7 +231,7 @@ public class consola {
 		}
 
 	}
-	private void ejecutarCargarJugadores() {
+	private void ejecutarCargarJugadores(){
 		try
 		{
 			String archivo = "data/Jugadores Fantasy League.csv";
@@ -242,11 +242,13 @@ public class consola {
 		catch (FileNotFoundException e)
 		{
 			System.out.println("ERROR: el archivo indicado no se encontró.");
+			throw e;
 		}
 		catch (IOException e)
 		{
 			System.out.println("ERROR: hubo un problema leyendo el archivo.");
 			System.out.println(e.getMessage());
+			throw e;
 		}
 
 	}

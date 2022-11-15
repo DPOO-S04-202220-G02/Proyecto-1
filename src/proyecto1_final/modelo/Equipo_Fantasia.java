@@ -25,6 +25,16 @@ public class Equipo_Fantasia {
 	
 	private int presupuesto;
 	
+	public int porteros = 0;
+	
+	public int defensas = 0;
+	
+	public int medios = 0;
+	
+	public int delanteros = 0;
+	
+	public boolean equipoNoCompleto = false;
+	
 	// Funcion constructora 
 	
 	public Equipo_Fantasia (String elNombre, boolean hay_transferencias) {
@@ -87,6 +97,42 @@ public class Equipo_Fantasia {
 	}
 	
 	
+	public boolean limitePos(String posicion, int tipo_equipo) {
+		if (tipo_equipo == 1) {
+		
+		if (posicion.equals("portero") && porteros == 2) {
+			return false;
+		}
+		if (posicion.equals("defensa") && defensas ==5) {
+			return false;
+		}
+		if (posicion.equals("mediocentro") && medios ==5) {
+			return false;
+		}
+		if (posicion.equals("delantero") && delanteros ==3) {
+			return false;
+		}
+		}
+		
+		else if (tipo_equipo == 2) {
+			
+			if (posicion.equals("portero") && porteros == 1) {
+				return false;
+			}
+			if (posicion.equals("defensa") && defensas ==4) {
+				return false;
+			}
+			if (posicion.equals("mediocentro") && medios ==4) {
+				return false;
+			}
+			if (posicion.equals("delantero") && delanteros ==2) {
+				return false;
+			}
+			}
+		
+		return true;
+		
+	}
 	
 
 	

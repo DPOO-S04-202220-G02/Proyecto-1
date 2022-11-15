@@ -3,7 +3,6 @@ package proyecto1_final.modelo;
 import java.util.HashMap;
 import java.util.Map;
 
-import uniandes.dpoo.taller0.modelo.Evento;
 
 
 

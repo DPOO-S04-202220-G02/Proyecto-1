@@ -11,7 +11,6 @@ import java.util.Set;
 import proyecto1_final.modelo.Equipo;
 import proyecto1_final.modelo.Equipo_Fantasia;
 import proyecto1_final.modelo.Jugador;
-import uniandes.dpoo.taller0.modelo.Atleta;
 
 public class creacionBaseDeDatos {
 	//Atributos 
@@ -43,6 +42,7 @@ public class creacionBaseDeDatos {
 
 	public Map<String, List<Jugador>> jugadoresPorEquipo(String nombreEquipo){
 		Map<String, List<Jugador>> resultado = new HashMap<String, List<Jugador>>();
+		return resultado;
 	}
 	
 	public Jugador jugadorPorNombre(String nombre) {
