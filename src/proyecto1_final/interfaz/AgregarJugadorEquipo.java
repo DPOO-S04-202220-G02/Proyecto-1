@@ -107,7 +107,7 @@ public class AgregarJugadorEquipo extends JDialog implements ActionListener
         botonCancelar.setPreferredSize( new Dimension( 2, 2 ) );
         panelAnadirJugador.add( botonCancelar );
         
-        error = new JLabel( "valida" );
+        error = new JLabel( "Recuerda que tienes un presupuesto de 100M$ y un límite de posiciones." );
         panelAnadirJugador.add( error );
         add(panelAnadirJugador);
     }
@@ -142,9 +142,10 @@ public class AgregarJugadorEquipo extends JDialog implements ActionListener
                 add(panelAnadirJugador);
         	}
         }
-        else if( comando.equals( CANCELAR ) )
+        else if( comando.equals( "Cancelar" ) )
         {
-           
+        	remove(panelAnadirJugador);
+    		dispose();
         }
     
     }

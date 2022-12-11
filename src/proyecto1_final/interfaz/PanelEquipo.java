@@ -55,11 +55,11 @@ public class PanelEquipo extends JFrame implements ActionListener
 		datosFantasy.equipoNuevo = new Equipo_Fantasia("", true);
 		panelEquipo = new JPanel( );
 		setTitle( "Crear Equipo" );
-	    setSize( 580, 700 );
+	    setSize( 550, 700 );
 	    setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
 	   
 	    panelEquipo.setBorder( new CompoundBorder( new TitledBorder( "Crea tu equipo" ), new EmptyBorder( 3, 3, 3, 3 ) ) );
-	    panelEquipo.setLayout( new GridLayout( 5, 2, 1, 1 ) );
+	    panelEquipo.setLayout( new GridLayout( 2, 2, 1, 1 ) );
 	  
 	    JLabel NombreDelEquipo = new JLabel( "Nombre de tu Equipo" );
 	    panelEquipo.add( NombreDelEquipo );
@@ -71,7 +71,7 @@ public class PanelEquipo extends JFrame implements ActionListener
 	    AgregarJugador = new JButton( "AgregarJugador" );
 	    AgregarJugador.setActionCommand( "AgregarJugador" );
 	    AgregarJugador.addActionListener( this );
-	    AgregarJugador.setPreferredSize( new Dimension( 2, 2 ) );
+	    AgregarJugador.setPreferredSize( new Dimension( 5, 5 ) );
 	    panelEquipo.add( AgregarJugador );
 	    
 
@@ -81,8 +81,8 @@ public class PanelEquipo extends JFrame implements ActionListener
 
 	    ScrollJugadores = new JScrollPane(ListaJugadoresEquipo );
 	    ScrollJugadores.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
-	    ScrollJugadores.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
-	    ScrollJugadores.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new LineBorder( Color.BLACK, 1 ) ) );
+	    ScrollJugadores.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED );
+	    ScrollJugadores.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 10, 3 ), new LineBorder( Color.BLACK, 1 ) ) );
 
         panelEquipo.add( ListaJugadoresEquipo );
         add(panelEquipo);
@@ -103,6 +103,14 @@ public class PanelEquipo extends JFrame implements ActionListener
 	{
 		jugadoresAgregados.add(jugador);
 		ListaJugadoresEquipo.setListData( jugadoresAgregados.toArray());
+		if ((ListaJugadoresEquipo.getModel().getSize()) == 15) {
+			
+			JLabel equipoCompleto = new JLabel( "Has completado tu equipo" );
+			panelEquipo.add( equipoCompleto );
+	        add(panelEquipo);
+			
+		}
+		
 		
 	}
  @Override
