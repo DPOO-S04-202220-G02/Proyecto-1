@@ -44,9 +44,13 @@ public class LoaderResultadosJornada {
 			int tarjetasAmarillas = Integer.parseInt(lista_jornada[9]);
 			int tarjetasRojas = Integer.parseInt(lista_jornada[10]);
 			int autogol = Integer.parseInt(lista_jornada[11]);
+			int manos = Integer.parseInt(lista_jornada[12]);
+			int tiro_libre_cobrado = Integer.parseInt(lista_jornada[13]);
+			int gol_tiro_libre = Integer.parseInt(lista_jornada[14]);
+			String estado_final = (lista_jornada[15]);
 			Jugador jugador = baseDeDatos.jugadorPorNombre(nombreJugador);
 			if (jugador!= null) {
-			Puntos puntos = new Puntos(posicionJugador,TiempoJugado,Goles_anotados,Goles_recibidos,Asistencias,penaltiFallado,penaltiAtajado,tarjetasAmarillas,tarjetasRojas,autogol);
+			Puntos puntos = new Puntos(posicionJugador,TiempoJugado,Goles_anotados,Goles_recibidos,Asistencias,penaltiFallado,penaltiAtajado,tarjetasAmarillas,tarjetasRojas,autogol,manos,tiro_libre_cobrado,gol_tiro_libre,estado_final);
 			puntos.calcularPuntos();
 			jugador.agregarPuntosJornada(puntos, NumJornada);
 			baseDeDatos.actualizarJugador(nombreJugador, jugador);
