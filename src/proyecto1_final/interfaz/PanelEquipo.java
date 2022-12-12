@@ -41,16 +41,21 @@ public class PanelEquipo extends JFrame implements ActionListener
 	
 	private AgregarJugadorEquipo dAgregarJugadorEquipo;
 	
+	private EquipoCompleto dEquipoCompleto;
+	
 	private DatosFantasy datosFantasy;
 	
 	private JList ListaJugadoresEquipo;
 	
 	private ArrayList jugadoresAgregados = new ArrayList();
+	
+	private InterfazFantasy fantasy;
 		
 	
 	
-	public PanelEquipo(DatosFantasy datos)
+	public PanelEquipo(DatosFantasy datos, InterfazFantasy interfazFantasy)
     {
+		fantasy = interfazFantasy;
 		datosFantasy = datos;
 		datosFantasy.equipoNuevo = new Equipo_Fantasia("", true);
 		panelEquipo = new JPanel( );
@@ -103,11 +108,16 @@ public class PanelEquipo extends JFrame implements ActionListener
 	{
 		jugadoresAgregados.add(jugador);
 		ListaJugadoresEquipo.setListData( jugadoresAgregados.toArray());
+		
 		if ((ListaJugadoresEquipo.getModel().getSize()) == 15) {
 			
-			JLabel equipoCompleto = new JLabel( "Has completado tu equipo" );
-			panelEquipo.add( equipoCompleto );
-	        add(panelEquipo);
+			dEquipoCompleto = new EquipoCompleto(this, datosFantasy, fantasy);
+			dEquipoCompleto.setVisible( true );
+			
+			
+			//JLabel equipoCompleto = new JLabel( "Has completado tu equipo" );
+			//panelEquipo.add( equipoCompleto );
+	        //add(panelEquipo);
 			
 		}
 		

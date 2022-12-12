@@ -96,9 +96,9 @@ public class InterfazFantasy extends JFrame implements ActionListener
 		 Jugadores.setVisible(true);
 		 
 	 }
-	 public void crearequipo()
+	 public void crearequipo(InterfazFantasy fantasy)
 	 {
-		 PanelEquipo Equipo = new PanelEquipo(datosFantasy);
+		 PanelEquipo Equipo = new PanelEquipo(datosFantasy, fantasy);
 		 Equipo.setVisible(true);
 	 }
 	 public void accederequipo()

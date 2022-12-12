@@ -35,6 +35,8 @@ public class Equipo_Fantasia {
 	
 	public boolean equipoNoCompleto = false;
 	
+	public  List<Equipo_Fantasia> listaEquipos;
+	
 	// Funcion constructora 
 	
 	public Equipo_Fantasia (String elNombre, boolean hay_transferencias) {
@@ -43,6 +45,7 @@ public class Equipo_Fantasia {
 		this.presupuesto = 100000000;
 		this.jugadores = new HashMap<>();
 		this.titulares = new HashMap<>();
+		listaEquipos = new ArrayList<Equipo_Fantasia>();
 		
 	}
 	
@@ -153,7 +156,9 @@ public class Equipo_Fantasia {
 		
 	}
 	
-
+	public void añadirEquipoALista(Equipo_Fantasia equipo) {
+		listaEquipos.add(equipo);
+	}
 	
 	
 
