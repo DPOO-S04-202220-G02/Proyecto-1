@@ -23,6 +23,7 @@ public class InterfazFantasy extends JFrame implements ActionListener
 	private JTextField txtContraseña;
 	
 	private JButton registrar;
+	private JButton admin;
 
 	private MenuPrincipal dMenu;
 	
@@ -41,11 +42,20 @@ public class InterfazFantasy extends JFrame implements ActionListener
 	        panelUsuario = new JPanel( );
 
 	        panelUsuario.setBorder( new CompoundBorder( new TitledBorder( "Registro del Usuario" ), new EmptyBorder( 3, 3, 3, 3 ) ) );
-	        panelUsuario.setLayout( new GridLayout( 5, 2, 1, 1 ) );
+	        panelUsuario.setLayout( new GridLayout( 6, 2, 1, 1 ) );
 
 	        // Cédula
+	        admin = new JButton("Administrador");
+	        admin.setActionCommand( "Administrador");
+	        admin.addActionListener( this );
+	        admin.setPreferredSize( new Dimension( 2, 2 ) );
+	        panelUsuario.add(admin);
+	        
+	        
+	        
 	        JLabel nombreUsuario = new JLabel( "Nombre de usuario: " );
 	        panelUsuario.add( nombreUsuario );
+	        
 
 	        txtCedula = new JTextField(  "" );
 	        txtCedula.setEditable( true );

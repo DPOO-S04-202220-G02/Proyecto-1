@@ -215,7 +215,7 @@ public class consola {
 	private void ejecutarCargarResultadosPartido() {
 		try
 		{	
-			String nombreArchivo = "data/excel jornadas.csv";
+			String nombreArchivo = "data/Jornadas Fantasy League.csv";
 			baseDeDatos = LoaderResultadosJornada.cargarArchivo(nombreArchivo, baseDeDatos);
 			System.out.println("Se cargó el archivo " + nombreArchivo + " con información de los partidos.");
 		}
@@ -234,7 +234,7 @@ public class consola {
 	private void ejecutarCargarJugadores(){
 		try
 		{
-			String archivo = "data/Jugadores Fantasy League.csv";
+			String archivo = "data/Jornadas Fantasy League.csv";
 			baseDeDatos = LoaderJugadores.cargarArchivo(archivo);
 			System.out.println("Se cargó el archivo " + archivo + " con información de los jugadores.");
 		}

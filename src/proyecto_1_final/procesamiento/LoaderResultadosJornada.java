@@ -30,7 +30,7 @@ public class LoaderResultadosJornada {
 		
 		linea = br.readLine();
 		while (linea != null) {
-			String[] lista_jornada = linea.split(";");
+			String[] lista_jornada = linea.split(",");
 			String NumJornada = (lista_jornada[0]);
 			String nombreJugador = lista_jornada[1];
 			Posicion posicionJugador = Posicion.valueOf(lista_jornada[2].toUpperCase());

@@ -254,7 +254,7 @@ public class DatosFantasy {
 	public void ejecutarCargarResultadosPartido() {
 		try
 		{	
-			String nombreArchivo = "data/Jornada 1 Fantasy League.csv";
+			String nombreArchivo = "data/Jornadas Fantasy League.csv";
 			baseDeDatos = LoaderResultadosJornada.cargarArchivo(nombreArchivo, baseDeDatos);
 			System.out.println("Se cargó el archivo " + nombreArchivo + " con información de los partidos.");
 		}
