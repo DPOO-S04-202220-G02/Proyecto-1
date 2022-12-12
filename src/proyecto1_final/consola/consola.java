@@ -215,7 +215,7 @@ public class consola {
 	private void ejecutarCargarResultadosPartido() {
 		try
 		{	
-			String nombreArchivo = "data/Jornada 1 Fantasy League.csv";
+			String nombreArchivo = "data/excel jornadas.csv";
 			baseDeDatos = LoaderResultadosJornada.cargarArchivo(nombreArchivo, baseDeDatos);
 			System.out.println("Se cargó el archivo " + nombreArchivo + " con información de los partidos.");
 		}
