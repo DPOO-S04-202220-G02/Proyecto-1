@@ -153,7 +153,7 @@ public class MenuPrincipal extends JFrame implements ActionListener
 	        }
 		 if( comando.equals("acceder_equipo") )
 	        {
-	            fantasy.accederequipo();
+	            fantasy.accederequipo(fantasy);
 	        }
 		 if( comando.equals("modificar_alineacion") )
 	        {
