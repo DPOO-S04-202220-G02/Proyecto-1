@@ -52,18 +52,18 @@ public class MenuPrincipal extends JFrame implements ActionListener
 	        panelUsuario.setLayout( new GridLayout( 5, 2, 1, 1 ) );
 
 	        
-	        cargar_jugadores = new JButton( "Cargar archivo de los jugadores" );
-	        cargar_jugadores.setActionCommand( "cargar_jugadores" );
-	        cargar_jugadores.addActionListener( this );
-	        cargar_jugadores.setPreferredSize( new Dimension( 2, 2 ) );
-	        panelUsuario.add( cargar_jugadores );
+	        //cargar_jugadores = new JButton( "Cargar archivo de los jugadores" );
+	        //cargar_jugadores.setActionCommand( "cargar_jugadores" );
+	        //cargar_jugadores.addActionListener( this );
+	        //cargar_jugadores.setPreferredSize( new Dimension( 2, 2 ) );
+	        //panelUsuario.add( cargar_jugadores );
 	        add(panelUsuario);
 	        
-	        cargar_jornadas = new JButton( "Cargar archivo de las jornadas" );
-	        cargar_jornadas.setActionCommand( "cargar_jornadas" );
-	        cargar_jornadas.addActionListener( this );
-	        cargar_jornadas.setPreferredSize( new Dimension( 2, 2 ) );
-	        panelUsuario.add( cargar_jornadas );
+	        //cargar_jornadas = new JButton( "Cargar archivo de las jornadas" );
+	        //cargar_jornadas.setActionCommand( "cargar_jornadas" );
+	        //cargar_jornadas.addActionListener( this );
+	        //cargar_jornadas.setPreferredSize( new Dimension( 2, 2 ) );
+	        //panelUsuario.add( cargar_jornadas );
 	        add(panelUsuario);
 	        
 	        mostrar_jugadores = new JButton( "Mostrar catalogo de los jugadores" );

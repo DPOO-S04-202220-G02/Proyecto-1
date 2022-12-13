@@ -111,8 +111,8 @@ public class AdminMenuPrincipal extends JFrame implements ActionListener
 	        {
 			 remove(panelUsuario);
 	        dispose();
-			 InterfazFantasy Fantasy = new InterfazFantasy();
-			 Fantasy.setVisible(true);
+			 //InterfazFantasy Fantasy = new InterfazFantasy();
+			 //Fantasy.setVisible(true);
 	        }
 	
 		 if( comando.equals("salir") )
