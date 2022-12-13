@@ -114,10 +114,11 @@ public class PanelEquipo extends JFrame implements ActionListener
 			dEquipoCompleto = new EquipoCompleto(this, datosFantasy, fantasy);
 			dEquipoCompleto.setVisible( true );
 			
-			
-			//JLabel equipoCompleto = new JLabel( "Has completado tu equipo" );
-			//panelEquipo.add( equipoCompleto );
-	        //add(panelEquipo);
+			ArrayList list = new ArrayList(ListaJugadoresEquipo.getModel().getSize());
+			for (int i = 0; i < ListaJugadoresEquipo.getModel().getSize(); i++) {
+			    list.add(ListaJugadoresEquipo.getModel().getElementAt(i));
+			}
+			datosFantasy.añadirEquipoFantasia(NombreEquipo.getText(),jugadoresAgregados);
 			
 		}
 		

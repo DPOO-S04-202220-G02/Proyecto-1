@@ -27,6 +27,8 @@ public class InterfazFantasy extends JFrame implements ActionListener
 
 	private MenuPrincipal dMenu;
 	
+	private AdminMenuPrincipal dAMenu;
+	
 	private static DatosFantasy datosFantasy;
 	
 	private  JPanel panelUsuario;
@@ -82,10 +84,25 @@ public class InterfazFantasy extends JFrame implements ActionListener
 		 	dMenu.setVisible( true );
 	    }
 	 
+	 public void registrarAdmin( )
+	    {
+		 	dAMenu = new AdminMenuPrincipal( this );
+		 	dAMenu.setVisible( true );
+	    }
+	 
 	 @Override
-		public void actionPerformed(ActionEvent e) {
+	 public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-		 	registrarUsuario();
+		 String comando = e.getActionCommand( );
+		 if( comando.equals("Registrar") )
+	        {
+			 registrarUsuario();
+	        }
+		 if( comando.equals("Administrador") )
+	        {
+			 registrarAdmin();
+	        }
+		 
 		}
 	 
 	 public void cargarJugadores()
@@ -113,9 +130,9 @@ public class InterfazFantasy extends JFrame implements ActionListener
 	 }
 	 public void accederequipo(InterfazFantasy fantasy)
 	 {	
-		 PanelMostrarEquipo Tres = new PanelMostrarEquipo(datosFantasy, fantasy);
+		 NombreMostrarEquipo Tres = new NombreMostrarEquipo(datosFantasy, fantasy);
 		 Tres.setVisible(true);
-		 datosFantasy.ejecutarInformacionEquipoFantasia();
+		 //datosFantasy.ejecutarInformacionEquipoFantasia();
 	 }
 	 public void modificaralineacion()
 	 {

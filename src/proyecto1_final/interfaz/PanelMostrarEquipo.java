@@ -33,47 +33,78 @@ public class PanelMostrarEquipo extends JFrame implements ActionListener
 	
 	private JList listaEspacios;
 	
+	private JTextField txtNombre;
+	
+	private JLabel IngreseNombre;
+	
+	private JButton botonBuscar;
 	
 	
 	
 	
-	public PanelMostrarEquipo(DatosFantasy datosFantasy, InterfazFantasy fantasy)
+	
+	public PanelMostrarEquipo(DatosFantasy datosFantasy , String nombre)
     {
-		panelUsuario = new JPanel( );
-		 setTitle( "Jugadores" );
-	     setSize( 580, 700 );
+		 panelUsuario = new JPanel( );
+		 setTitle( "Mostrar Equipo" );
+	     setSize( 480, 600 );
 	     setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
+	     panelUsuario.setLayout( new GridLayout( 2, 1, 1, 1 ) );
+	     
+	     IngreseNombre = new JLabel( "Bienvenido a " + nombre );
+	     panelUsuario.add( IngreseNombre );
 	     
 	     
-
-        listaEspacios = new JList( );
-        listaEspacios.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
-        listaEspacios.setListData( datosFantasy.ejecutarAccederListaJugadores().toArray());
-    
+	     listaEspacios = new JList( );
+	     listaEspacios.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+	     listaEspacios.setListData( datosFantasy.accederEquipoFantasia(nombre).toArray());
+	       
 
         scroll = new JScrollPane( listaEspacios );
         scroll.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
         scroll.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
-        scroll.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new LineBorder( Color.BLACK, 1 ) ) );
-
-        add( scroll, BorderLayout.CENTER );
-        JPanel panelUsuario = new JPanel();
-        panelUsuario.setLayout( new GridLayout(1, 2 ));
+        scroll.setBorder( new CompoundBorder( new EmptyBorder( 0, 0, 0, 0 ), new LineBorder( Color.BLACK, 1 ) ) );
         
-        add( panelUsuario, BorderLayout.SOUTH );
+        panelUsuario.add( scroll );
+        
+        
+        //botonBuscar = new JButton( "Buscar" );
+	     //botonBuscar.setActionCommand( "Aceptar" );
+	    // botonBuscar.addActionListener( this );
+	     //botonBuscar.setPreferredSize( new Dimension( 1, 1 ) );
+	     //panelUsuario.add( botonBuscar );
+	     
+        add(panelUsuario);
+        
+        //add( scroll, BorderLayout.CENTER );
+        //add( panelUsuario, BorderLayout.SOUTH );
       
         
     }
 
 
 
-
+	public JList actualizarLista(DatosFantasy datosFantasy, String nombre) {
+		
+		listaEspacios = new JList( );
+        listaEspacios.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+        listaEspacios.setListData( datosFantasy.accederEquipoFantasia(nombre).toArray());
+        
+        return listaEspacios;
+	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	 public void actionPerformed( ActionEvent pEvento )
+    {
+        String comando = pEvento.getActionCommand();
+
+        if( comando.equals( "Aceptar" ) )
+        {
+        	//actualizarLista();
+        }
+        
+    
+    }
 	
 	public void MostrarScroll() {
 		panelUsuario.setVisible(true);

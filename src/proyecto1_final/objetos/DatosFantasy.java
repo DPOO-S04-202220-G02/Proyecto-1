@@ -420,4 +420,63 @@ public class DatosFantasy {
 	}
 	}
 	
+	
+public void añadirEquipoFantasia(String nombre, ArrayList lista) {
+		
+	
+	Equipo_Fantasia equipoNuevo = new Equipo_Fantasia(nombre,false);
+	
+	for (Object jugador:  lista){
+	String jug =  jugador.toString();
+	Jugador player = baseDeDatos.jugadorPorNombre(jug);
+	equipoNuevo.agregarJugador(player);
+	}
+	
+	baseDeDatos.agregarEquipo_FantasiaConNombre(equipoNuevo, nombre);
+	
+
+}
+	
+	
+	
+	public boolean EquipoPorNombre(String nombre) {
+		
+		Equipo_Fantasia equipoFantasia = baseDeDatos.darEquipoFantasiaPorNombre(nombre);
+		if (equipoFantasia == null) {
+			return false;
+		}
+		
+		else {
+			return true;
+		}
+	
+}
+	
+	public ArrayList accederEquipoFantasia(String nombre) {
+		int PuntosTot = 0;
+		ArrayList jugadores = new ArrayList();
+		Equipo_Fantasia equipoFantasia = baseDeDatos.darEquipoFantasiaPorNombre(nombre);
+		if (equipoFantasia == null) {
+			return jugadores;
+		}
+		Map<String,Jugador> jugadoresFantasia = equipoFantasia.darEquipoFantasia();
+		
+		
+		for (Map.Entry jugador: jugadoresFantasia.entrySet()) {
+			Jugador info = (Jugador) jugador.getValue();
+			System.out.println("Nombre: " + info.darNombre());
+			System.out.println("Posicion: " + info.darPosicion());
+			System.out.println("Equipo: " + info.darEquipo());
+			System.out.println("Precio: " + info.darPrecio());
+			System.out.println("Puntos: " + info.darPuntosTotales());
+			System.out.println("------------------------------");
+			PuntosTot = PuntosTot + info.darPuntosTotales();
+			jugadores.add("Nombre: " + info.darNombre() + "      Posicion: " + info.darPosicion() + "      Equipo: " + info.darEquipo() + "      Precio: " + info.darPrecio() + "      Puntos Totales: " + info.darPuntosTotales());
+			jugadores.add("\n");
+		}
+		jugadores.add("---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		jugadores.add("Para un total de: "+ PuntosTot +" puntos");
+		return jugadores;
+		}
+	
 }
